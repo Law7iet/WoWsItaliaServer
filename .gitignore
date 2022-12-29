@@ -1,0 +1,7 @@
+__pycache__
+.breakpoints
+.config
+.replit
+.upm
+replit.nix
+venv

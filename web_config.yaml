@@ -1,0 +1,8 @@
+app_id : aa9b0029121f80a56efed14a402c8f74
+
+bind_web_ip: 0.0.0.0
+bind_web_port: 8080
+
+public_web_ip: server.law7iet.repl.co
+public_web_port: 8080
+

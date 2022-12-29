@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>WoWs Italia</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="./../static/css/root.css">
+	</head>
+	<body>
+		<div class="card center rounded-lg p-3">
+			{% if data.status == 0 %}
+			<h3 class="card-title content">Fatto!</h3>
+			<div class="card-text content">
+				Login effettuato correttamente. Ora puoi autenticarti su Discord col comando <span class="text-monospace">/auth</span>.
+				<br>
+				I tuoi dati:
+				<ul>
+					<li>Nickame in gioco: <span class="text-monospace">{{ data.content.user }}</span></li>
+					<li>ID in gioco: <span class="text-monospace">{{ data.content.wows }}</span></li>
+					<li>ID su Discord: <span class="text-monospace">{{ data.content.discord }}</span></li>
+				</ul>
+			</div>
+			{% else %}
+			<h3 class="card-title content">Errore</h3>	
+			{% if data.status == -1 %}
+			<div class="card-text content">
+				Giocatore eistente.
+				<br>
+				Dati del giocatore esistente:
+				<ul>
+					<li>ID in gioco: <span class="text-monospace">{{ data.content.wows }}</span></li>
+					<li>ID su Discord: <span class="text-monospace">{{ data.content.discord }}</span></li>
+				</ul>
+				Contattare un amministratore.
+			</div>
+			{% elif data.status == -2 %}
+			<div class="card-text content">Giocatore non inserito. Contattare un amministratore.</div>
+			{% elif data.status == -3 %}
+			<div class="card-text content">URL non valido poiché già utilizzato. Contattare un amministratore.</div>
+			{% elif data.status == -4 %}
+			<div class="card-text content">Problema con le API della Wargaming (<span class="text-monospace">{{ data.content.status }}</span>). Contattare un amministratore.</div>
+			{% else %}
+			<div class="card-text content">Argomenti non validi. Contattare un amministratore.</div>
+			{% endif %}
+			{% endif %}
+		</div>
+	</body>
+</html>
